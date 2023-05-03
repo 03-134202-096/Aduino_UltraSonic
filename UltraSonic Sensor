@@ -1,0 +1,39 @@
+int const trig=2;
+int const echo=3;
+int const buzzer=4;
+void setup()
+{
+pinMode(4, OUTPUT);
+pinMode(2, OUTPUT);
+pinMode(3, INPUT);
+Serial.begin(9600);
+}
+
+void loop()
+{
+  //trig
+digitalWrite(2,LOW);
+delayMicroseconds(2);
+
+digitalWrite(2, HIGH);
+delayMicroseconds(10);
+digitalWrite(2, LOW);
+
+long duration=pulseIn(3,HIGH);
+long distance=duration*0.034/2;
+
+
+
+if(distance<=4)
+{
+  digitalWrite(4,HIGH);
+}
+else {
+digitalWrite(4,LOW);
+}
+
+Serial.print("DISTANCE in cm ");
+Serial.println(distance);
+
+delay(500);
+}
